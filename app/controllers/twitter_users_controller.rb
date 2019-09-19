@@ -69,6 +69,6 @@ class TwitterUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def twitter_user_params
-      params.fetch(:twitter_user, {})
+      params.require(:twitter_user).permit(:username)
     end
 end
