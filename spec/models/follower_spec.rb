@@ -1,10 +1,13 @@
 require 'rails_helper'
 require 'follower.rb'
+require 'twitter_user.rb'
 
 RSpec.describe Follower, type: :model do
 
+  let(:user) { TwitterUser.create(username: "anything") }
+
   subject { 
-    described_class.new(username: "anything", twitter_user_id: 1)
+    described_class.new(username: "anything", twitter_user_id: user.id)
   }
 
   it "is valid with valid attributes" do
