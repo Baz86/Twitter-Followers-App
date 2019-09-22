@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @twitter_user.username %></h1>
+<div class="followers">
+    <h4>Followers</h4>
+    <% @followers.each do |follower| %>
+        <span><%= follower.username %>, </span>
+    <% end %>
+</div>
 <%= link_to 'Edit', edit_twitter_user_path(@twitter_user) %> |
 <%= link_to 'Back', twitter_users_path %>
