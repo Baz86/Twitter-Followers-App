@@ -29,14 +29,6 @@ class TwitterUsersController < ApplicationController
 
     respond_to do |format|
       if @twitter_user.save
-        followers = $twitter.followers(@twitter_user.username)
-
-        followers.each do |follower|
-          user_follower = Follower.new
-          user_follower.username = follower["screen_name"]
-          user_follower.twitter_user_id = @twitter_user.id
-          user_follower.save!
-        end
         format.html { redirect_to @twitter_user, notice: 'Twitter user was successfully created.' }
         format.json { render :show, status: :created, location: @twitter_user }
       else
